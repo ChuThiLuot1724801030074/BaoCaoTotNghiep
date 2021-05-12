@@ -6,7 +6,7 @@
                         <header class="panel-heading">
                             THÊM DANH MỤC SẢN PHẨM
                         </header>
-                        <div class="panel-body" style="background-color: #ddede0;">
+                        <div class="panel-body" style="background-color: #F8E0E0;">
                         <?php
                     $message = Session::get('TEN');
                     if($message)

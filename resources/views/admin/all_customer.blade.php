@@ -27,7 +27,7 @@
         </tbody>
       </table>
     </div>
-    <footer class="panel-footer">
+    <!-- <footer class="panel-footer">
       <div class="row">
         
         <div class="col-sm-5 text-center">
@@ -44,7 +44,7 @@
           </ul>
         </div>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </div>
 @endsection

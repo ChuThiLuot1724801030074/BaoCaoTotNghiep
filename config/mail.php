@@ -14,7 +14,7 @@ return [
     */
 
      'default' => env('MAIL_MAILER', 'smtp'),
-    'host'=> env('MAIL_HOST','smtp.gmail.com'),
+    'host'=> env('MAIL_HOST','smtp.googlemail.com'),
     'port'=>env('MAIL_PORT', 587),
     'driver'=>env('MAIL_DRIVER','smtp'),
     /*

@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="trangchu"><img style="width: 1140px" , height="400px" src="{{asset('frontend/image/banner.jpg')}}" alt="" /></a>
+                            <a href="trangchu"><img style="width: 1140px" , height="350px" src="{{asset('frontend/image/blog-three.jpg')}}" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
 
@@ -94,7 +94,7 @@
                                 if ($customer_id != NULL && $shipping_id == NULL) {
                                 ?>
                                     <li><a style="font-size: 18px;" href="{{URL::to('/login-checkout')}}">
-                                            {{__('Thanh toán')}}</a>
+                                            Thanh toán</a>
                                     </li>
 
                                 <?php
@@ -102,14 +102,14 @@
 
                                 ?>
                                     <li><a style="font-size: 18px;"  href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i>
-                                            {{__('Thanh toán')}}</a> </li>
+                                           Thanh toán</a> </li>
                                 <?php
                                 }
                                 ?>
 
 
                                 <li><a style="font-size: 18px;"  href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i>
-                                        {{__('Giỏ hàng')}}</a>
+                                        Giỏ hàng</a>
                                 </li>
                                 <?php
                                 $customer_id = Session::get('customer_id');
@@ -119,12 +119,12 @@
                                 ?>
                                     <li ><a  style="font-size: 18px;"href="{{URL::to('/change-password')}}">Đổi mật khẩu</a></li>
 
-                                    <li><a style="font-size: 18px;" href="{{URL::to('/logout-checkout')}}"><?php echo $customer_name ?><i class="fa fa-lock"></i> {{__('Đăng xuất')}}</a>
+                                    <li><a style="font-size: 18px;" href="{{URL::to('/logout-checkout')}}"><?php echo $customer_name ?><i class="fa fa-lock"></i>Đăng xuất</a>
                                     </li>
                                 <?php
                                 } else {
                                 ?>
-                                    <li><a style="font-size: 18px;" href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i>{{__('Đăng nhập')}}</a>
+                                    <li><a style="font-size: 18px;" href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i>Đăng nhập</a>
                                     </li>
                                 <?php
                                 }
@@ -153,13 +153,13 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="{{URL::to('/trangchu')}}" class="active">{{__('Trang chủ')}}</a></li>
+                                <li><a href="{{URL::to('/trangchu')}}" class="active">Trang chủ</a></li>
 
-                                <li class="dropdown"><a href="#">{{__('Tin tức ')}}</i></a>
+                                <li class="dropdown"><a href="{{URL::to('/tintuc')}}">Tin tức</i></a>
                                 
                                 </li>
-                                <li><a href="{{URL::to('/gio-hang')}}">{{__('Giỏ hàng')}}</a></li>
-                                <li><a href="contact">{{__('Liên hệ')}}</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}">Giỏ hàng</a></li>
+                                <li><a href="contact">Liên hệ</a></li>
 
                                
                             </ul>
@@ -197,9 +197,9 @@
                             <div class="item active">
                                 <div class="col-sm-6">
                                     <h1>Shop Shoes</h1>
-                                    <h2>{{__('Giảm giá cực sốc')}}</h2>
+                                    <h2>Giảm giá cực sốc</h2>
                                     <p> </p>
-                                    <p>{{__('Đặt hàng ngay bây giờ')}}</p>
+                                    <p>Đặt hàng ngay bây giờ</p>
                                 </div>
                                 <div class="col-sm-6">
                                     <img src="{{asset('frontend/image/Slidegiay1.jpg')}}" class="girl img-responsive" alt="" />
@@ -208,7 +208,7 @@
                             <div class="item">
                                 <div class="col-sm-6">
                                     <h1><span>Shop Shoes</h1>
-                                    <p>{{__('Một đôi giày có thể thay đổi cuộc đời bạn')}}</p>
+                                    <p>Một đôi giày có thể thay đổi cuộc đời bạn</p>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -238,7 +238,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
-                        <h2>{{__('Danh mục sản phẩm')}}</h2>
+                        <h2>Danh mục sản phẩm</h2>
                         <div class="panel-group category-products" id="accordian">
                             <!--category-productsr-->
                             @foreach($category as $key => $cate )
@@ -255,12 +255,12 @@
 
                         <div class="brands_products">
                             <!--brands_products-->
-                            <h2>{{__('Thương hiệu sản phẩm')}}</h2>
+                            <h2>Thương hiệu sản phẩm</h2>
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($brand as $key => $brand )
                                     <li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}">
-                                            <span class="pull-right">(50)</span>{{$brand->brand_name}}</a></li>
+                                            <span class="pull-right"></span>{{$brand->brand_name}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -274,9 +274,18 @@
                 </div>
             </div>
         </div>
+        
     </section>
+    <footer id="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-right">Cửa hàng bán giày thể thao<span><a target="_blank" href="">Shop Shoes Bình Chuẩn</a></span></p>
+                </div>
+            </div>
+        </div>
 
-
+    </footer>
 
     <script src="{{asset('frontend/js/jquery.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
@@ -285,7 +294,7 @@
     <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script src="{{asset('frontend/js/sweetalert.min.js')}}"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     $(document).ready(function(){
         
         load_comment();
@@ -323,61 +332,84 @@
             });
         });
     });
-</script>
-    <script type="text/javascript">
+</script> -->
+ 
+<script type="text/javascript">
+        $(document).ready(function() {
+            $('.send_order').click(function() {
+                swal({
+                        title: "Xác nhận đơn hàng",
+                        text: "Đơn hàng sẽ không được hoàn trả khi đặt,bạn có muốn đặt không?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Mua hàng",
 
-$(document).ready(function(){
-  $('.send_order').click(function(){
-      swal({
-        title: "Xác nhận đơn hàng",
-        text: "Đơn hàng sẽ không được hoàn trả khi đặt,bạn có muốn đặt không?",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Cảm ơn, Mua hàng",
+                        cancelButtonText: "Đóng",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            var shipping_email = $('.shipping_email').val();
+                            var shipping_name = $('.shipping_name').val();
+                            var shipping_address = $('.shipping_address').val();
+                            var shipping_phone = $('.shipping_phone').val();
+                            var shipping_notes = $('.shipping_notes').val();
+                            var shipping_method = $('.payment_select').val();
+                            var order_fee = $('.order_fee').val();
+                            var order_coupon = $('.order_coupon').val();
+                            var _token = $('input[name="_token"]').val();
+                            if(shipping_method==0){
+                                $.ajax({
+                                url: '{{url('/payment-onlines')}}',
+                                method: 'POST',
+                                data: {
+                                    shipping_email: shipping_email,
+                                    shipping_name: shipping_name,
+                                    shipping_address: shipping_address,
+                                    shipping_phone: shipping_phone,
+                                    shipping_notes: shipping_notes,
+                                    _token: _token,
+                                    order_fee: order_fee,
+                                    order_coupon: order_coupon,
+                                    shipping_method: shipping_method
+                                },
+                                success: function() {
+                                    $(location).attr('href', 'thanh-toan');
+                                }
+                                });
+                            }else{
+                                $.ajax({
+                                url: '{{url('/confirm-order')}}',
+                                method: 'POST',
+                                data: {
+                                    shipping_email: shipping_email,
+                                    shipping_name: shipping_name,
+                                    shipping_address: shipping_address,
+                                    shipping_phone: shipping_phone,
+                                    shipping_notes: shipping_notes,
+                                    _token: _token,
+                                    order_fee: order_fee,
+                                    order_coupon: order_coupon,
+                                    shipping_method: shipping_method
+                                },
+                                success: function() {
+                                    swal("Đơn hàng", "Đơn hàng của bạn đã được gửi thành công", "success");
+                                }
+                            });
+                            window.setTimeout(function() {
+                                location.reload();
+                            }, 3000);
+                            }
 
-          cancelButtonText: "Đóng,chưa mua",
-          closeOnConfirm: false,
-          closeOnCancel: false
-      },
-      function(isConfirm){
-           if (isConfirm) {
-              var shipping_email = $('.shipping_email').val();
-              var shipping_name = $('.shipping_name').val();
-              var shipping_address = $('.shipping_address').val();
-              var shipping_phone = $('.shipping_phone').val();
-              var shipping_notes = $('.shipping_notes').val();
-              var shipping_method = $('.payment_select').val();
-              var order_fee = $('.order_fee').val();
-              var order_coupon = $('.order_coupon').val();
-              var _token = $('input[name="_token"]').val();
-
-              $.ajax({
-                  url: '{{url('/confirm-order')}}',
-                  method: 'POST',
-                  data:{shipping_email:shipping_email,shipping_name:shipping_name,shipping_address:shipping_address,shipping_phone:shipping_phone,shipping_notes:shipping_notes,_token:_token,order_fee:order_fee,order_coupon:order_coupon,shipping_method:shipping_method},
-                  success:function(){
-                     swal("Đơn hàng", "Đơn hàng của bạn đã được gửi thành công", "success");
-                  }
-              });
-
-              window.setTimeout(function(){ 
-                  location.reload();
-              } ,3000);
-
-            } else {
-              swal("Đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng", "error");
-
-            }
-    
-      });
-
-     
-  });
-});
-
-
-</script>
+                        } else {
+                            swal("Đóng", "Đơn hàng chưa được gửi, làm ơn hoàn tất đơn hàng", "error");
+                        }
+                    });
+            });
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.add-to-cart').click(function() {
@@ -385,10 +417,13 @@ $(document).ready(function(){
                 var cart_product_id = $('.cart_product_id_' + id).val();
                 var cart_product_name = $('.cart_product_name_' + id).val();
                 var cart_product_image = $('.cart_product_image_' + id).val();
+                var cart_product_quantity = $('.cart_product_quantity_' + id).val();
                 var cart_product_price = $('.cart_product_price_' + id).val();
                 var cart_product_qty = $('.cart_product_qty_' + id).val();
                 var _token = $('input[name="_token"]').val();
-
+                if(parseInt(cart_product_qty)>parseInt(cart_product_quantity)){
+                    alert('Làm ơn đặt nhỏ hơn ' + cart_product_quantity);
+                }else{
                 $.ajax({
                     url: '{{url('/add-cart-ajax')}}',
                     method: 'POST',
@@ -397,8 +432,10 @@ $(document).ready(function(){
                         cart_product_name: cart_product_name,
                         cart_product_image: cart_product_image,
                         cart_product_price: cart_product_price,
+                        
+
                         cart_product_qty: cart_product_qty,
-                        _token: _token
+                        _token: _token,cart_product_quantity:cart_product_quantity
                     },
                     success: function() {
 
@@ -418,6 +455,7 @@ $(document).ready(function(){
                     }
 
                 });
+            }
             });
         });
     </script>

@@ -35,14 +35,7 @@
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
                             <input type="text" class="form-control" name="product_price" id="exampleInputEmail1" value="{{$pro->product_price}}">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Giá khuyến mãi</label>
-                            <input type="text" class="form-control" name="product_promo" id="exampleInputEmail1" placeholder=" Giá sản phẩm" value="{{$pro->product_promo}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Size</label>
-                            <input type="text" class="form-control" name="product_size" id="exampleInputEmail1" value="{{$pro->product_size}}">
-                        </div>
+                       
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                             <input type="file" class="form-control" name="product_image" id="exampleInputEmail1">

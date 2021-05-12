@@ -8,7 +8,7 @@
                 <li class="active">{{__('Thanh toán')}}</li>
             </ol>
         </div>
-        <div class="col-sm-12 clearfix" style="width: 500px;height: 500px;">
+        <!-- <div class="col-sm-12 clearfix" style="width: 500px;height: 500px;">
             @if(session()->has('message'))
             <div class="alert alert-success">
                 {{ session()->get('message') }}
@@ -17,7 +17,7 @@
             <div class="alert alert-danger">
                 {{ session()->get('error') }}
             </div>
-            @endif
+            @endif -->
             <!-- <div class="table-responsive cart_info"> -->
 
                 <form action="{{url('/update-cart')}}" method="POST">
@@ -192,6 +192,40 @@
                             <div class="bill-to">
                                 <p>{{__('Thông tin gửi hàng')}}</p>
                                 <div class="form-one">
+                                <form>
+                                        @csrf
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Chọn thành phố</label>
+                                            <select name="city" id="city" class="form-control input-sm m-bot15 choose city">
+
+                                                <option value="">--Chọn tỉnh thành phố--</option>
+                                                @foreach($city as $key => $ci)
+                                                <option value="{{$ci->matp}}">{{$ci->name_city}}</option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Chọn quận huyện</label>
+                                            <select name="province" id="province" class="form-control input-sm m-bot15 province choose">
+                                                <option value="">--Chọn quận huyện--</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Chọn xã phường</label>
+                                            <select name="wards" id="wards" class="form-control input-sm m-bot15 wards">
+                                                <option value="">--Chọn xã phường--</option>
+                                            </select>
+                                        </div>
+
+
+                                        <input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary btn-sm calculate_delivery">
+
+
+                                    </form>
+
                                     <form action="{{URL::to('/save-checkout-customer')}}" method="POST">
                                         {{csrf_field()}}
                                         <input type="text" name="shipping_email" class="shipping_email" placeholder="Email">
@@ -227,40 +261,7 @@
                                         </div>
                                         <input type="button" value="Xác nhận đơn hàng" name="send_order" class="btn btn-primary btn-sm send_order">
                                     </form>
-                                    <form>
-                                        @csrf
-
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Chọn thành phố</label>
-                                            <select name="city" id="city" class="form-control input-sm m-bot15 choose city">
-
-                                                <option value="">--Chọn tỉnh thành phố--</option>
-                                                @foreach($city as $key => $ci)
-                                                <option value="{{$ci->matp}}">{{$ci->name_city}}</option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Chọn quận huyện</label>
-                                            <select name="province" id="province" class="form-control input-sm m-bot15 province choose">
-                                                <option value="">--Chọn quận huyện--</option>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Chọn xã phường</label>
-                                            <select name="wards" id="wards" class="form-control input-sm m-bot15 wards">
-                                                <option value="">--Chọn xã phường--</option>
-                                            </select>
-                                        </div>
-
-
-                                        <input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary btn-sm calculate_delivery">
-
-
-                                    </form>
-
+                              
                                 </div>
 
                             </div>

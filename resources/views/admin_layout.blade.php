@@ -34,6 +34,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
 	<script src="{{asset('backend/js/raphael-min.js')}}"></script>
 	<script src="{{asset('backend/js/morris.js')}}"></script>
+
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 </head>
 
 <body>
@@ -87,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<aside>
 			<div id="sidebar" class="nav-collapse">
 				<!-- sidebar menu start-->
-				<div style="overflow: hidden;outline: none;background: #81F7D8; class=" leftside-navigation">
+				<div style="overflow: hidden;outline: none;background: #F6CECE;" class= " leftside-navigation">
 					<ul class="sidebar-menu" id="nav-accordion">
 						<li>
 							<a class="active" href="{{URL::to('/dashboard')}}">
@@ -206,11 +212,89 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
 	<script src="{{asset('backend/js/scripts.js')}}"></script>
 	<script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-	<script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+	 <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
 	<script src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
-	<script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
-	<script src="https:code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script> 
+	<!-- <script type="text/javascript"> -->
+		$(document).ready(function(){
+
+        chart60daysorder();
+
+        var chart = new Morris.Bar({
+             
+              element: 'chart',
+              //option chart
+              lineColors: ['#819C79', '#fc8710','#FF6541', '#A4ADD3', '#766B56'],
+                parseTime: false,
+                hideHover: 'auto',
+                xkey: 'period',
+                ykeys: ['order','sales','profit','quantity'],
+                labels: ['đơn hàng','doanh số','lợi nhuận','số lượng']
+            
+            });
+
+
+       
+        function chart60daysorder(){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url:"{{url('/days-order')}}",
+                method:"POST",
+                dataType:"JSON",
+                data:{_token:_token},
+                
+                success:function(data)
+                    {
+                        chart.setData(data);
+                    }   
+            });
+        }
+ 
+    $('.dashboard-filter').change(function(){
+        var dashboard_value = $(this).val();
+        var _token = $('input[name="_token"]').val();
+        // alert(dashboard_value);
+        $.ajax({
+            url:"{{url('/dashboard-filter')}}",
+            method:"POST",
+            dataType:"JSON",
+            data:{dashboard_value:dashboard_value,_token:_token},
+            
+            success:function(data)
+                {
+                    chart.setData(data);
+                }   
+            });
+
+    });
+
+    $('#btn-dashboard-filter').click(function(){
+       
+        var _token = $('input[name="_token"]').val();
+
+        var from_date = $('#datepicker3').val();
+        var to_date = $('#datepicker4').val();
+
+         $.ajax({
+            url:"{{url('/filter-by-date')}}",
+            method:"POST",
+            dataType:"JSON",
+            data:{from_date:from_date,to_date:to_date,_token:_token},
+            
+            success:function(data)
+                {
+                    chart.setData(data);
+                }   
+        });
+
+    });
+
+});
+    
+</script>
+
+
+
 	<script type="text/javascript">
 		$(function() {
 			$("#start_coupon").datepicker({
@@ -220,7 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				dayNamesMin: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
 				duration: "slow"
 			});
-			$("#end_coupon ").datepicker({
+			$("#end_coupon").datepicker({
 				prevText: "Tháng trước",
 				nextText: "Tháng sau",
 				dateFormat: "yy/mm/dd",
@@ -229,59 +313,91 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		});
 	</script>
+	<!-- date coupon -->
 	<script type="text/javascript">
-		$('.order_details').change(function() {
-			var order_status = $(this).val();
-			var order_id = $(this).children(":selected").attr("id");
-			var _token = $('input[name="_token"]').val();
-
-			//lay ra so luong
-			quantity = [];
-			$("input[name='product_sales_quantity']").each(function() {
-				quantity.push($(this).val());
+		$(function() {
+			$("#datepicker").datepicker({
+				prevText: "Tháng trước",
+				nextText: "Tháng sau",
+				dateFormat: "dd-mm-yy",
+				dayNamesMin: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
+				duration: "slow"
 			});
-			//lay ra product id
-			order_product_id = [];
-			$("input[name='order_product_id']").each(function() {
-				order_product_id.push($(this).val());
+			$("#datepicker2").datepicker({
+				prevText: "Tháng trước",
+				nextText: "Tháng sau",
+				dateFormat: "dd-mm-yy",
+				dayNamesMin: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
+				duration: "slow"
 			});
-
-			j = 0;
-			for (i = 0; i < order_product_id.length; i++) {
-				//so luong khach dat
-				var order_qty = $('.order_qty_' + order_product_id[i]).val();
-				//so luong ton kho
-				var order_qty_storage = $('.order_qty_storage_' + order_product_id[i]).val();
-
-				if (parseInt(order_qty) > parseInt(order_qty_storage)) {
-					j = j + 1;
-					if (j == 1) {
-						alert('Số lượng bán trong kho không đủ');
-					}
-					$('.color_qty_' + order_product_id[i]).css('background', '#000');
-				}
-			}
-			if (j == 0) {
-				$.ajax({
-					url: '{{url(' / update - order - qty ')}}',
-					method: 'POST',
-					data: {
-						_token: _token,
-						order_status: order_status,
-						order_id: order_id,
-						quantity: quantity,
-						order_product_id: order_product_id
-					},
-					success: function(data) {
-						alert('Thay đổi tình trạng đơn hàng thành công');
-						location.reload();
-					}
-				});
-			}
-
-
 		});
 	</script>
+	<script type="text/javascript">
+		$(function() {
+			$("#datepicker3").datepicker({
+				prevText: "Tháng trước",
+				nextText: "Tháng sau",
+				dateFormat: "yy-mm-dd",
+				dayNamesMin: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
+				duration: "slow"
+			});
+			$("#datepicker4").datepicker({
+				prevText: "Tháng trước",
+				nextText: "Tháng sau",
+				dateFormat: "yy-mm-dd",
+				dayNamesMin: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
+				duration: "slow"
+			});
+		});
+	</script>
+	<!-- end date coupon -->
+	<script type="text/javascript">
+    $('.order_details').change(function(){
+        var order_status = $(this).val();
+        var order_id = $(this).children(":selected").attr("id");
+        var _token = $('input[name="_token"]').val();
+
+         //lay ra so luong
+         quantity = [];
+        $("input[name='product_sales_quantity']").each(function(){
+            quantity.push($(this).val());
+        });
+        //lay ra product id
+        order_product_id = [];
+        $("input[name='order_product_id']").each(function(){
+            order_product_id.push($(this).val());
+        });
+        
+        j = 0;
+        for(i=0;i<order_product_id.length;i++){
+             //so luong khach dat
+             var order_qty = $('.order_qty_' + order_product_id[i]).val();
+            //so luong ton kho
+            var order_qty_storage = $('.order_qty_storage_' + order_product_id[i]).val();
+
+            if(parseInt(order_qty)>parseInt(order_qty_storage)){
+                j = j + 1;
+                if(j==1){
+                    alert('Số lượng bán trong kho không đủ');
+                }
+                $('.color_qty_'+ order_product_id[i]).css('background','#000');
+            }
+        }
+        if(j==0){
+            $.ajax({
+                url : '{{url('/update-order-qty')}}',
+                    method: 'POST',
+                    data:{_token:_token, order_status:order_status ,order_id:order_id ,quantity:quantity, order_product_id:order_product_id},
+                    success:function(data){
+                        alert('Thay đổi tình trạng đơn hàng thành công');
+                        location.reload();
+                    }
+        });     
+        }
+
+       
+    });
+</script>
 	<script type="text/javascript">
 		$('.update_quantity_order').click(function() {
 			var order_product_id = $(this).data('product_id');
@@ -292,7 +408,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			// alert(order_qty);
 			// alert(order_code);
 			$.ajax({
-				url: '{{url(' / update - qty ')}}',
+				url: '{{url('/update-qty')}}',
 
 				method: 'POST',
 
@@ -326,7 +442,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			function fetch_delivery() {
 				var _token = $('input[name="_token"]').val();
 				$.ajax({
-					url: '{{url(' / select - feeship ')}}',
+					url: '{{url('/select-feeship')}}',
 					method: 'POST',
 					data: {
 						_token: _token
@@ -344,7 +460,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				// alert(feeship_id);
 				// alert(fee_value);
 				$.ajax({
-					url: '{{url(' / update - delivery ')}}',
+					url: '{{url('/update-delivery')}}',
 					method: 'POST',
 					data: {
 						feeship_id: feeship_id,
@@ -369,7 +485,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				// alert(wards);
 				// alert(fee_ship);
 				$.ajax({
-					url: '{{url(' / insert - delivery ')}}',
+					url: '{{url('/insert-delivery')}}',
 					method: 'POST',
 					data: {
 						city: city,
@@ -400,7 +516,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					result = 'wards';
 				}
 				$.ajax({
-					url: '{{url(' / select - delivery ')}}',
+					url: '{{url('/select-delivery')}}',
 					method: 'POST',
 					data: {
 						action: action,
@@ -519,7 +635,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- calendar -->
-	<script type="text/javascript" src="asset{{('backend/js/monthly.js')}}"></script>
+	<!-- <script type="text/javascript" src="asset{{('backend/js/monthly.js')}}"></script>
 	<script type="text/javascript">
 		$(window).load(function() {
 
@@ -548,7 +664,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}
 
 		});
-	</script>
+	</script> -->
 	<!-- //calendar -->
 </body>
 

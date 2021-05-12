@@ -19,6 +19,9 @@ Route::get('/trangchu','HomeController@index');
 Route::post('/tim-kiem','HomeController@search');
 Route::get('/all-customer', 'HomeController@all_customer');
 
+Route::get('/tintuc','HomeController@tintuc');
+
+
 //danh muc sp trang chu
 Route::get('/danh-muc-san-pham/{category_id}','CategoryProduct@show_category_home');
 Route::get('/tag/{product_tag}','ProductController@tag');
@@ -42,6 +45,8 @@ Route::get('/admin','AdminController@index');
 Route::get('/dashboard','AdminController@show_dashboard');
 Route::get('/logout','AdminController@logout');
 Route::post('/admin-dashboard','AdminController@dashboard');
+Route::post('/filter-by-date','AdminController@filter_by_date');
+Route::post('/days-order','AdminController@days_order');
 
 
 // catetogry product
@@ -99,11 +104,12 @@ Route::post('/save-product','ProductController@save_product');
 Route::post('/update-product/{product_id}','ProductController@update_product');
 
 // cart
+
 Route::post('/update-cart-quantity','CartController@update_cart_quantity');
+Route::post('/update-cart','CartController@update_cart');
 Route::post('/save-cart','CartController@save_cart');
 Route::get('/save-cart','CartController@save_cart');
 Route::get('/show-cart','CartController@show_cart');
-Route::post('/update-cart','CartController@update_cart');
 Route::post('/add-cart-ajax','CartController@add_cart_ajax');
 Route::get('/gio-hang','CartController@gio_hang'); 
 Route::get('/del-product/{session_id}','CartController@delete_product');
@@ -139,7 +145,7 @@ Route::get('/manage-order','OrderController@manage_order');
 Route::get('/view-order/{order_code}','OrderController@view_order');
 Route::post('/update-order-qty','OrderController@update_order_qty');
 Route::post('/update-qty','OrderController@update_qty');
-
+Route::get('/delete-order/{order_code}','OrderController@order_code');
 
 
 //Login facebook
@@ -147,7 +153,6 @@ Route::get('/login-facebook','AdminController@login_facebook');
 Route::get('/admin/callback','AdminController@callback_facebook');
 
 //send mail
-
 
 Route::get('/send-coupon/{coupon_time}/{coupon_condition}/{coupon_number}/{coupon_code}','MailController@send_coupon');
 Route::get('/contact', 'HomeController@contact');
@@ -166,3 +171,8 @@ Route::get('/change-password','PasswordController@changepassword');
 Route::post('/change-password','PasswordController@update');
 
 
+///thanh toán online
+Route::post('/payment-onlines','PaymentController@payment_onlines');
+Route::get('/thanh-toan','PaymentController@thanh_toan');
+Route::post('/thanhtoan-onlines','PaymentController@thanhtoan_onlines');
+Route::get('/vnpay-return',['as'=>'vnpayreturn','uses'=>'PaymentController@vnpay_return']);

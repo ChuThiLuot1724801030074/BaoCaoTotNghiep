@@ -25,9 +25,12 @@ class CouponController extends Controller
         return Redirect::to('list-coupon');
     }
     public function list_coupon(){
-    $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d/m/Y');
+    $list_coupon= Coupon::orderBy('coupon_id','DESC')->paginate(5);
+    $month= Carbon::now('Asia/Ho_Chi_Minh')->month;
+    $year= Carbon::now('Asia/Ho_Chi_Minh')->year;
+    $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
     $coupon = Coupon::orderby('coupon_id','DESC')->get();
-    return view('admin.coupon.list_coupon')->with(compact('coupon','today'));
+    return view('admin.coupon.list_coupon')->with(compact('coupon','today','month','year'));
 }
     public function insert_coupon(){
     	return view('admin.coupon.insert_coupon');

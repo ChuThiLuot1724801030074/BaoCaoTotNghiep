@@ -13,11 +13,10 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #ff002f;
-    background-color
 }
 html, body{
 	font-family: 'Roboto', sans-serif;
-    font-size: 100%;
+    font-size: 12px;
     overflow-x: hidden;
     background: url(../image/bg.jpg) no-repeat 0px 0px
 	background-size:cover;
@@ -793,7 +792,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     font-size: 18px;
     font-weight: 400;
     padding: 0 16px;
-    background:#ddede0;
+    background:#F8E0E0;
    border-top-right-radius: 2px;
    border-top-left-radius: 2px; 
     text-transform: uppercase;
@@ -1641,7 +1640,7 @@ ul.bs-glyphicons-list {
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-agile-info{
-	background: #eef9f0;
+    background: #F8E0E0 ;
     padding: 2em;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -1656,8 +1655,8 @@ ul.bs-glyphicons-list {
 }
 .panel-default>.panel-heading {
     color: #000000 ! important;
-    background-color: #ddede0 ! important;
-    border-color: #ddede0 ! important;
+    background-color: #FBEFEF ! important;
+    border-color: #ddeFBEFEFde0 ! important;
     font-size: 20px;
 }
 p.hd-title {

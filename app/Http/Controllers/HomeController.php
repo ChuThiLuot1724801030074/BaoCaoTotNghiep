@@ -29,6 +29,19 @@ class HomeController extends Controller
         return view('pages.mail.contact')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product', $all_product)->with('meta_desc',$meta_desc)
         ->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
     }
+    public function tintuc()
+    {
+        $meta_desc='';
+        $meta_keywords='';
+        $meta_title='';
+        $url_canonical='';
+
+        $cate_product = DB::table('tbl_category_product')->where('Category_status', '0')->orderBy('category_id', 'desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderBy('brand_id', 'desc')->get();
+        $all_product = DB::table('tbl_product')->where('product_status', '0')->orderby('product_id', 'desc')->limit(9)->get();
+        return view('pages.tin_tuc')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product', $all_product)->with('meta_desc',$meta_desc)
+        ->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
+    }
 
     public function postcontact(Request $req)
     {
@@ -54,7 +67,7 @@ class HomeController extends Controller
         $cate_product = DB::table('tbl_category_product')->where('Category_status', '0')->orderBy('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderBy('brand_id', 'desc')->get();
 
-        $all_product = DB::table('tbl_product')->where('product_status', '0')->orderby('product_id', 'desc')->limit(9)->get();
+        $all_product = DB::table('tbl_product')->where('product_status', '1')->orderby('product_id', 'desc')->limit(9)->get();
 
         return view('pages.home')->with('category', $cate_product)->with('brand', $brand_product)
             ->with('all_product', $all_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)

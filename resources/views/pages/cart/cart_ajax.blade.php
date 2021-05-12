@@ -9,26 +9,27 @@
                 <li class="active">Giỏ hàng của bạn</li>
             </ol>
         </div>
-        @if(session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-        @elseif(session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session()->get('error') }}
-        </div>
-        @endif
+        <!-- @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {!! session()->get('message') !!}
+                    </div>
+                @elseif(session()->has('error'))
+                     <div class="alert alert-danger">
+                        {!! session()->get('error') !!}
+                    </div>
+                @endif -->
         <div class="table-responsive cart_info">
             <form action="{{url('/update-cart')}}" method="POST">
                 @csrf
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu" style="background-color: #ff7d94;">
-                            <td class="image">{{__('Hình ảnh')}}</td>
-                            <td class="description">{{__('Tên sản phẩm')}}</td>
-                            <td class="price">{{__('Giá sản phẩm')}}</td>
-                            <td class="quantity">{{__('Số lượng')}}</td>
-                            <td class="total">{{__('Thành tiền')}}</td>
+                            <td class="image">Hình ảnh</td>
+                            <td class="description">Tên sản phẩm</td>
+                            <td class="description">Số lượng tồn</td>
+                            <td class="price">Giá sản phẩm</td>
+                            <td class="quantity">Số lượng</td>
+                            <td class="total">Thành tiền</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -52,6 +53,10 @@
                                 <h4><a href=""></a></h4>
                                 <p>{{$cart['product_name']}}</p>
                             </td>
+                            <td class="cart_description">
+								<h4><a href=""></a></h4>
+								<p>{{$cart['product_quantity']}}</p>
+							</td>
                             <td class="cart_price">
                                 <p>{{number_format($cart['product_price'],0,',','.')}}đ</p>
                             </td>
@@ -76,7 +81,7 @@
                         <tr>
                             <td> <input type="submit" value="Cập nhật giỏ hàng" name="update_qty" class="check_out btn-default btn-sm">
                             </td>
-                            <td><a class="btn btn-default check_out" href="{{url('/del-all-product')}}">{{__('Xóa tất cả')}}</a>
+                            <td><a class="btn btn-default check_out" href="{{url('/del-all-product')}}">Xóa tất cả</a>
                             </td>
                             <td>
                                 @if(Session::get('coupon'))

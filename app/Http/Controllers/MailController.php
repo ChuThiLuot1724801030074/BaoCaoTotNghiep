@@ -15,11 +15,12 @@ use App\CatePost;
 use App\CategoryProductModel;
 use App\Slider;
 use App\Product;
+use Illuminate\Support\Facades\Redirect;
 
 class MailController extends Controller
 {
 
-    public function send_coupon($coupon_time,$coupon_condition,$coupon_number,$coupon_code){
+	public function send_coupon($coupon_time,$coupon_condition,$coupon_number,$coupon_code){
 		//get customer
 		$customer = Customer::where('customer_vip','=',NULL)->get();
 
@@ -35,6 +36,7 @@ class MailController extends Controller
 		foreach($customer as $normal){
 			$data['email'][] = $normal->customer_email;
 		}
+		
 		$coupon = array(
 			
 			'start_coupon' =>$start_coupon,
@@ -44,10 +46,11 @@ class MailController extends Controller
 			'coupon_number' => $coupon_number,
 			'coupon_code' => $coupon_code
 		);
-		Mail::send('pages.send_coupon',  ['coupon'=>$coupon] , function($message) use ($title_mail,$data){
+		Mail::send('pages.send_coupon', ['coupon' => $coupon],function($message) use ($title_mail,$data){
 	            $message->to($data['email'])->subject($title_mail);//send this mail with subject
 	            $message->from($data['email'],$title_mail);//send from this mail
 	    });
+		
   
 		 return redirect()->back()->with('message','Gửi mã khuyến mãi khách thường thành công');
     }

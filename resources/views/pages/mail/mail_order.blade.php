@@ -9,68 +9,68 @@
 
 </head>
 <body>
-	<div class="container" style="background: #222;border-radius: 12px;padding:15px;">
+	<div class="container" style="background: #ff7d94;border-radius: 12px;padding:15px;">
 		<div class="col-md-12" >
 
 			<p style="text-align: center;color: #fff">Đây là email tự động. Quý khách vui lòng không trả lời email này.</p>
-			<div class="row" style="background: cadetblue;padding: 15px">
+			<div class="row" style="background: white;padding: 15px">
 
 				
-				<div class="col-md-6" style="text-align: center;color: #fff;font-weight: bold;font-size: 30px">
+				<div class="col-md-6" style="text-align: center;color: #000;font-weight: bold;font-size: 30px">
 					<h4 style="margin:0">CỬA HÀNG SHOP SHOES BÌNH CHUẨN</h4>
 				</div>
 
-				<div class="col-md-6 logo"  style="color: #fff">
+				<div class="col-md-6 logo"  style="color: #000">
 					<p>Chào bạn <strong style="color: #000;text-decoration: underline;">{{$shipping_array['customer_name']}}</strong></p>
 				</div>
 				
 				<div class="col-md-12">
-					<p style="color:#fff;font-size: 17px;">Bạn hoặc một ai đó đã đăng ký dịch vụ tại shop với thông tin như sau:</p>
+					<p style="color:#000;font-size: 17px;">Bạn hoặc một ai đó đã đăng ký dịch vụ tại shop với thông tin như sau:</p>
 					<h4 style="color: #000;text-transform: uppercase;">Thông tin đơn hàng</h4>
-					<p>Mã đơn hàng : <strong style="text-transform: uppercase;color:#fff">{{$code['order_code']}}</strong></p>
-					<p>Mã khuyến mãi áp dụng : <strong style="text-transform: uppercase;color:#fff">{{$code['coupon_code']}}</strong></p>
-					<p>Phí ship hàng : <strong style="text-transform: uppercase;color:#fff">{{$shipping_array['fee']}}</strong></p>
-					<p>Dịch vụ : <strong style="text-transform: uppercase;color:#fff">Đặt hàng trực tuyến</strong></p>
+					<p>Mã đơn hàng : <strong style="text-transform: uppercase;color:#000">{{$code['order_code']}}</strong></p>
+					<p>Mã khuyến mãi áp dụng : <strong style="text-transform: uppercase;color:#000">{{$code['coupon_code']}}</strong></p>
+					<p>Phí ship hàng : <strong style="text-transform: uppercase;color:#000">{{$shipping_array['fee']}}</strong></p>
+					<p>Dịch vụ : <strong style="text-transform: uppercase;color:#000">Đặt hàng trực tuyến</strong></p>
 					
 					<h4 style="color: #000;text-transform: uppercase;">Thông tin người nhận</h4>
 
 					<p>Email : 
 						@if($shipping_array['shipping_email']=='')
-							<span style="color:#fff">không có</span>
+							<span style="color:#000">không có</span>
 						@else
-							<span style="color:#fff">{{$shipping_array['shipping_email']}}</span>
+							<span style="color:#000">{{$shipping_array['shipping_email']}}</span>
 						@endif
 					</p>
 
 					<p>Họ và tên người gửi : 
 						@if($shipping_array['shipping_name']=='')
-							<span style="color:#fff">không có</span>
+							<span style="color:#000">không có</span>
 						@else
-							<span style="color:#fff">{{$shipping_array['shipping_name']}}</span>
+							<span style="color:#000">{{$shipping_array['shipping_name']}}</span>
 						@endif
 					</p>
 					<p>Địa chỉ nhận hàng : 
 						@if($shipping_array['shipping_address']=='')
-							<span style="color:#fff">không có</span>
+							<span style="color:#000">không có</span>
 						@else
-							<span style="color:#fff">{{$shipping_array['shipping_address']}}</span>
+							<span style="color:#000">{{$shipping_array['shipping_address']}}</span>
 						@endif
 					</p>	
 					<p>Số điện thoại : 
 						@if($shipping_array['shipping_phone']=='')
-							<span style="color:#fff">không có</span>
+							<span style="color:#000">không có</span>
 						@else
-							<span style="color:#fff">{{$shipping_array['shipping_phone']}}</span>
+							<span style="color:#000">{{$shipping_array['shipping_phone']}}</span>
 						@endif
 					</p>	
 					<p>Ghi chú đơn hàng : 
 						@if($shipping_array['shipping_notes']=='')
-							<span style="color:#fff">không có</span>
+							<span style="color:#000">không có</span>
 						@else
-							<span style="color:#fff">{{$shipping_array['shipping_notes']}}</span>
+							<span style="color:#000">{{$shipping_array['shipping_notes']}}</span>
 						@endif
 					</p>	
-					<p>Hình thức thanh toán : <strong style="text-transform: uppercase;color:#fff">
+					<p>Hình thức thanh toán : <strong style="text-transform: uppercase;color:#000">
 						@if($shipping_array['shipping_method']==0)
 							Chuyển khoản ATM
 						@else
@@ -78,13 +78,14 @@
 						@endif
 					
 					</strong></p>
-					<p style="color:#fff">Nếu thông tin người nhận hàng không có chúng tôi sẽ liên hệ với người đặt hàng để trao đổi thông tin về đơn hàng đã đặt.</p>
+					<p style="color:#000">Nếu thông tin người nhận hàng không có chúng tôi sẽ liên hệ với người đặt hàng để trao đổi thông tin về đơn hàng đã đặt.</p>
 
 
 
-					<h4 style="color: #000;text-transform: uppercase;">Sản phẩm đã đặt</h4>
-
-					<table class="table table-striped" style="border:1px">
+					<h4 class="sanphamdadat" style="color: #000; text-align: center;
+					text-transform: uppercase;">Sản phẩm đã đặt</h4>
+					<div class="sanpham" style="text-align: center">
+					<table class="table table-striped" style="border:1px;text-align: center;margin-left: 20%; ">
 						<thead>
 							<tr>
 								<th>Sản phẩm</th>
@@ -123,10 +124,10 @@
 
 						</tbody>
 					</table>
-
+					</div>
 				</div>
 
-				<p style="color:#fff">Mọi chi tiết xin liên hệ website tại : <a target="_blank" href="http://hieutantutorial.com/">Shop</a>, hoặc liên hệ qua số hotline : 19005689.Xin cảm ơn quý khách đã đặt hàng shop chúng tôi.</p>
+				<p style="color:#fff; text-align: center;">Mọi chi tiết xin liên hệ website tại : <a target="_blank" href="">Shop</a>, hoặc liên hệ qua số điện thoại 0394796183.Xin cảm ơn quý khách đã đặt hàng shop chúng tôi.</p>
 
 			</div>
 		</div>

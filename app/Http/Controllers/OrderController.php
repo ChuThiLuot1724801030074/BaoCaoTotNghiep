@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Feeship;
 use App\Shipping;
@@ -13,8 +14,16 @@ use App\Coupon;
 use Carbon\Carbon;
 use App\Product;
 use PDF;
+use Session;
 class OrderController extends Controller
-{public function manage_order(){
+{
+	public function order_code(Request $request ,$order_code){
+	$order = Order::where('order_code',$order_code)->first();
+		$order->delete();
+		Session::put('message','Xóa đơn hàng thành công');
+		return redirect()->back();
+	}
+	public function manage_order(){
     	$order = Order::orderby('created_at','DESC')->paginate(5);
     	return view('admin.manage_order')->with(compact('order'));
     }
@@ -70,7 +79,6 @@ class OrderController extends Controller
 	public function view_order($order_code){
 		$order_details = OrderDetails::with('product')->where('order_code',$order_code)->get();
 		$order = Order::where('order_code',$order_code)->get();
-
 		foreach($order as $key => $ord){
 			$customer_id = $ord->customer_id;
 			$shipping_id = $ord->shipping_id;
@@ -79,8 +87,9 @@ class OrderController extends Controller
 		$customer = Customer::where('customer_id',$customer_id)->first();
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
 
-		$order_details = OrderDetails::with('product')->where('order_code', $order_code)->get();
-		foreach($order_details as $key => $order_d){
+		$order_details_product = OrderDetails::with('product')->where('order_code', $order_code)->get();
+
+		foreach($order_details_product as $key => $order_d){
 
 			$product_coupon = $order_d->product_coupon;
 		}
@@ -93,7 +102,7 @@ class OrderController extends Controller
 			$coupon_number = 0;
 		}
 		
-		return view('admin.view_order')->with(compact('order_details','customer','shipping','coupon_condition','coupon_number','order','order_status'));
+		return view('admin.view_order')->with(compact('order_details','customer','shipping','order_details','coupon_condition','coupon_number','order','order_status'));
 
 	}
 }

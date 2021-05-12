@@ -195,7 +195,7 @@
                                 @csrf
                                 <select class="form-control order_details">
                                     <!-- <option value="">--Chọn tình trạng đơn hàng--</option> -->
-                                    <option id="{{$or->order_id}}" selected value="1">Chưa xử lý</option>
+                                    <option disabled id="{{$or->order_id}}" selected value="1">Chưa xử lý</option>
                                     <option id="{{$or->order_id}}" value="2">Đã xử lý - Đã giao hàng</option>
 
                                 </select>

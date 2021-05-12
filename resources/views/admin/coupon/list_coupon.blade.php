@@ -14,6 +14,7 @@
           <option value="3">Export</option>
         </select>
         <button class="btn btn-sm btn-default">Apply</button>                 -->
+   <!-- <p><a href="{{url('/send-coupon')}}"class="btn btn-default">Gửi giảm giá cho khách hàng</a> </p> -->
       </div>
       <div class="col-sm-4">
       </div>
@@ -47,7 +48,7 @@
             <th>Số giảm</th>
             <th>Tình trạng</th>
             <th>Hết hạn</th>
-            <td>Quản lý</td>
+            <th>Quản lý</th>
             <th>Gửi mã</th>
 
 
@@ -119,6 +120,18 @@
               <a onclick="return confirm('Bạn có chắc là muốn xóa mã này ko?')" href="{{URL::to('/delete-coupon/'.$cou->coupon_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
+            </td>
+            <td>
+            <p><a href="{{url('/send-coupon',[ 
+
+                          
+                'coupon_time'=> $cou->coupon_time,
+                'coupon_condition'=> $cou->coupon_condition,
+                'coupon_number'=> $cou->coupon_number,
+                'coupon_code'=> $cou->coupon_code
+
+
+                ])}}" class="btn btn-default">Gửi giảm giá cho khách hàng</a></p>  
             </td>
           </tr>
           @endforeach
