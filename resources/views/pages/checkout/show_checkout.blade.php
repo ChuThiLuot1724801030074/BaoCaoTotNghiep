@@ -19,7 +19,7 @@
             </div>
             @endif -->
             <!-- <div class="table-responsive cart_info"> -->
-
+<div>
                 <form action="{{url('/update-cart')}}" method="POST">
                     @csrf
                     <table class="table table-condensed">
@@ -169,8 +169,8 @@
                         </tbody>
                     </table>
 
-
                 </form>
+</div>
                 @if(Session::get('cart'))
                 <tr>
                     <td>
@@ -271,12 +271,10 @@
 
 
 
-
+                    </div>
 
                     </div>
                 </div>
-            <!-- </div> -->
-        </div>
 
     </div>
 </section>
