@@ -1535,7 +1535,9 @@ h2.title {
   border: 1px solid #E6E4DF;
   margin-bottom: 50px
 }
-
+#cart_items>.container{
+  width: 100% !important;
+}
 
 #cart_items .cart_info .cart_menu {
   background: #ff7d94;

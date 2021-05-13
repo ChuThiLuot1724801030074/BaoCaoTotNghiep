@@ -57,7 +57,7 @@
                             <ul class="nav navbar-nav">
                                 <li>
 
-                                    <a href="https://www.facebook.com/Luot28122017/"><img style="width: 20px;
+                                    <a href="https://www.facebook.com/luot.lep1601  "><img style="width: 20px;
   height: 20px;margin-top:8px" src="{{asset('frontend/image/fb.jpg')}}"></a>
                                 </li>
                                 <li><a href="https://www.instagram.com/luot.lep1601/"><img style="width: 39px;
