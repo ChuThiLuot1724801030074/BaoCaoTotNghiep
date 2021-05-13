@@ -54,6 +54,7 @@ class CheckoutController extends Controller
           $password =$request->account_password;
           // dd($name,$password);
           $result = DB::table('tbl_customers')->where('customer_email',$name)->where('customer_password',$password)->first();
+          if(!$result)return back()->with('error',"Sai thông tin đăng nhập");
           // dd($result);
           if($result)
           {
@@ -366,7 +367,8 @@ class CheckoutController extends Controller
         $data['customer_phone']=$request->customer_phone;
         $data['customer_email']=$request->customer_email;
         $data['customer_password']=$request->customer_password;
-
+        if($request->customer_password!=$request->customer_password_confirm)
+        return back()->with('error',"Nhập lại mật khẩu không đúng");
         $customer_id=DB::table('tbl_customers')->insertGetId($data);
         if($customer_id)
         {

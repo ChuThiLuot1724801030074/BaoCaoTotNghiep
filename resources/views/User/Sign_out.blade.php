@@ -25,13 +25,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1>{{__('GIAO DIỆN ĐĂNG KÍ')}}</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
+				@include('message')
 				<form action="{{URL::to('/sign_up')}}" method="post">
 				{{csrf_field()}}
 					<input class="text" type="text" name="customer_name" placeholder="Họ và tên" required="">
 					<input class="text email" type="email" name="customer_email" placeholder="Email" required="">
 					<input style="margin-bottom: 30px;" class="text" type="text" name="customer_phone" placeholder="Số điện thoại" required="">
-					<input class="text" type="password" name="" placeholder="Mật khẩu" required="">
-					<input class="text w3lpass" type="password" name="customer_password" placeholder="Nhập lại mật khẩu" required="">
+					<input class="text" type="password" name="customer_password" placeholder="Mật khẩu" required="">
+					<input class="text w3lpass" type="password" name="customer_password_confirm" placeholder="Nhập lại mật khẩu" required="">
 					<div class="wthree-text">
 						
 						<div class="clear"> </div>

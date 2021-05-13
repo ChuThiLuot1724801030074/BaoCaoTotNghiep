@@ -35,6 +35,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class="sub-main-w3">	
 			<div class="wthree-pro">
 			</div>
+			<div class="arlet" style="color: #fff;">
+			@include('message')
+			</div>
 			<form action="{{URL::to('/login')}}" method="post">
 			{{csrf_field()}}
 				<div class="pom-agile">
@@ -50,7 +53,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				@endif
 				<div class="sub-w3l">
 					<h6><a href="{{URL::to('/sign_up')}}">{{__('Đăng kí')}}</h6>
-					<h6><a href="{{URL::to('/quen_mat_khau')}}">{{__('Quên mật khẩu')}}</a></h6>
 					<div class="right-w3l">
 						<input type="submit" value="ĐĂNG NHẬP">
 					</div>

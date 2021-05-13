@@ -45,7 +45,7 @@ class HomeController extends Controller
 
     public function postcontact(Request $req)
     {
-        $to_email = "chuthiluot1999@gmail.com";
+        $to_email = "luotly1999@gmail.com";
         Mail::send('pages.mail.send_maill', [
             'name' => $req->name,
             'email' => $req->email,
